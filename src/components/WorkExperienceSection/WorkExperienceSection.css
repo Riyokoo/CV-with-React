@@ -1,0 +1,7 @@
+.work-experience-container {
+  padding-left: 30px;
+  padding-top: 20px;
+  overflow: auto;
+
+  height: 100px;
+}
