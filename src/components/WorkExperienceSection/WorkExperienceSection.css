@@ -1,7 +1,61 @@
 .work-experience-container {
   padding-left: 30px;
-  padding-top: 20px;
-  overflow: auto;
+  padding-top: 10px;
+  padding-right: 30px;
+}
 
-  height: 100px;
+.jobs-list {
+  margin-top: 20px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+}
+
+.period {
+  white-space: nowrap;
+  padding-top: 5px;
+
+  width: 100px;
+  font-size: 15px;
+}
+
+.job-item {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+}
+
+.job-title {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.job-title-name {
+  color: #6495ed;
+}
+
+.work-icon {
+  font-size: 20px;
+  transform: translateY(20%);
+  padding-right: 15px;
+}
+
+.jobs-list::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+.jobs-list::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+.jobs-list::-webkit-scrollbar-thumb {
+  background-color: black; /* color of the scroll thumb */
+  border-radius: 6px; /* roundness of the scroll thumb */
+  border: 1px inherit; /* creates padding around scroll thumb */
+}
+
+.description {
+  color: gray;
 }
