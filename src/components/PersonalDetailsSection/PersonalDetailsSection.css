@@ -1,0 +1,55 @@
+.personal-details-container {
+  width: 80%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+
+.personal-details-header {
+  font-family: "PT Sans", sans-serif;
+  color: white;
+  margin-left: 5%;
+}
+
+.changed-font {
+  font-family: "PT Sans", sans-serif;
+}
+
+.changed-font-2 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "PT Sans", sans-serif;
+}
+
+.profile-picture {
+  font-size: 190px;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  color: white;
+}
+
+.profile-icon {
+  font-size: 30px;
+}
+
+.house-icon {
+  font-size: 39px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.phone-icon {
+  font-size: 27px;
+}
+
+.linkedin-link {
+  text-decoration: none;
+}
