@@ -12,14 +12,15 @@ export default class DescriptionSection extends React.Component {
 
                 <div className = "short-summary">
                     <text className = "description">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into electronic
-                         typesetting, remaining essentially unchanged. It was popularised in the 1960s
-                         with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                         recently with desktop publishing software like Aldus PageMaker including versions
-                          of Lorem Ipsum.
+                        With a few experience in this domain, I am currently studying at
+                        Universitatea Politehnica Timisoara at Automation and Applied Informatics,
+                         in the 3rd year. I have basic knowledge of C, Python and JavaScript
+                         programming languages, knowledge in Object Oriented Programming in C++,
+                         Java as well as good understanding in OOP principles. In the present
+                          I am studying React JS and React Native, being passionate in web and
+                          mobile development. I've not worked for a company yet but I'm willing
+                          to learn new things every day, work hard, be open minded and hopefully
+                           become the part of a team.
                     </text>
                 </div>
 

@@ -1,0 +1,61 @@
+.education-experience-container {
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-right: 30px;
+}
+
+.educations-list {
+  margin-top: 20px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+}
+
+.period {
+  white-space: nowrap;
+  padding-top: 5px;
+
+  width: 100px;
+  font-size: 15px;
+}
+
+.education-item {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+}
+
+.education-title {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.education-title-name {
+  color: #6495ed;
+}
+
+.education-icon {
+  font-size: 20px;
+  transform: translateY(20%);
+  padding-right: 15px;
+}
+
+.educations-list::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+.educations-list::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+.educations-list::-webkit-scrollbar-thumb {
+  background-color: black; /* color of the scroll thumb */
+  border-radius: 6px; /* roundness of the scroll thumb */
+  border: 1px inherit; /* creates padding around scroll thumb */
+}
+
+.description {
+  color: gray;
+}

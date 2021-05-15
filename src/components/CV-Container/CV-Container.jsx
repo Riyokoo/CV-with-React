@@ -2,6 +2,8 @@ import React from 'react';
 import './CV-Container.css';
 import DescriptionSection from '../DescriptionSection/DescriptionSection';
 import WorkExperienceSection from '../WorkExperienceSection/WorkExperienceSection';
+import EducationSection from '../EducationSection/EducationSection';
+import SkillsSection from '../SkillsSection/SkillsSection';
 
 export default class CvContainer extends React.Component {
 
@@ -15,6 +17,11 @@ export default class CvContainer extends React.Component {
                 
                 <DescriptionSection></DescriptionSection>
                 <WorkExperienceSection></WorkExperienceSection>
+                <EducationSection></EducationSection>
+                <SkillsSection></SkillsSection>
+                
+                
+                
 
             </div>
         )
