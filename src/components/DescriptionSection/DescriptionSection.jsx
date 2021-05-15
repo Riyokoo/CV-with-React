@@ -1,14 +1,47 @@
 import React from 'react';
 import './DescriptionSection.css';
+import fb from '../../Fire.js';
+import firestore from '@firebase/firestore';
+
+var firestore_list = fb
+    .firestore()
+    .collection("CV")
+    .doc("short-description");
+
+
+
 
 export default class DescriptionSection extends React.Component {
 
+
+    
+    state = {
+        nume:"",
+    }
+
+    constructor(props) {
+        super(props);
+
+       firestore_list.onSnapshot(doc => {
+            this.setState({
+                nume:doc.data().nume
+            })
+        })
+    }
+    
+    
+
+
     render() {
+
+      
+
+
         return (
             
             <div className = "description-container">
                 
-                <text className = "header-name">Vladi</text>
+                <text className="header-name">{this.state.nume}</text>
 
                 <div className = "short-summary">
                     <text className = "description">

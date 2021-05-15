@@ -4,7 +4,7 @@ import { IoPersonCircleOutline } from 'react-icons/io5'
 import { BsFillPersonFill, BsFillHouseDoorFill } from 'react-icons/bs'
 import { FaPhone } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import { AiFillLinkedin } from 'react-icons/ai';
+import { AiFillLinkedin,AiFillGithub } from 'react-icons/ai';
 
 export default class PersonalDetailsSection extends React.Component {
 
@@ -51,10 +51,24 @@ export default class PersonalDetailsSection extends React.Component {
                     </div>
 
                     <div className = "section">
+                        <AiFillGithub className = "phone-icon"></AiFillGithub>
+                        <div className = "data ">
+                            <text className = "changed-font">Github</text>
+                            <a className="changed-font-2"
+                                href="https://github.com/Riyokoo" className="linkedin-link" >
+                                 Riyokoo
+                                </a>
+                        </div>
+                    </div>
+
+                    <div className = "section">
                         <AiFillLinkedin className = "phone-icon"></AiFillLinkedin>
                         <div className = "data ">
                             <text className = "changed-font">LinkedIn</text>
-                            <a  className = "changed-font-2" href = "https://www.linkedin.com/in/ciuculescu-vladimir-2017b41b9/" className = "linkedin-link" >Ciuculescu Vladimir</a>
+                            <a className="changed-font-2"
+                                href="https://www.linkedin.com/in/ciuculescu-vladimir-2017b41b9/" className="linkedin-link" >
+                               Ciuculescu Vladimir
+                                </a>
                         </div>
                     </div>
 
