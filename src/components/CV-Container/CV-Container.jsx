@@ -4,6 +4,7 @@ import DescriptionSection from '../DescriptionSection/DescriptionSection';
 import WorkExperienceSection from '../WorkExperienceSection/WorkExperienceSection';
 import EducationSection from '../EducationSection/EducationSection';
 import SkillsSection from '../SkillsSection/SkillsSection';
+import ProjectsSection from '../ProjectsSection/ProjectsSection';
 
 export default class CvContainer extends React.Component {
 
@@ -19,6 +20,7 @@ export default class CvContainer extends React.Component {
                 <WorkExperienceSection></WorkExperienceSection>
                 <EducationSection></EducationSection>
                 <SkillsSection></SkillsSection>
+                <ProjectsSection></ProjectsSection>
                 
                 
                 

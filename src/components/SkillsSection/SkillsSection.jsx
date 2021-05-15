@@ -78,16 +78,6 @@ export default class SkillsSection extends React.Component {
                         </text>
                     </div>
 
-                    
-
-                   
-
-                   
-
-                   
-
-                    
-                    
                </div>
 
 
