@@ -19,6 +19,8 @@
 .changed-font-2 {
   font-family: "Open Sans Condensed", sans-serif;
   font-family: "PT Sans", sans-serif;
+  width: 150px;
+  word-wrap: break-word;
 }
 
 .profile-picture {

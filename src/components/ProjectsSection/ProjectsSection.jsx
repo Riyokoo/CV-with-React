@@ -2,8 +2,47 @@ import React from 'react'
 import './ProjectsSection.css';
 import { FaArrowAltCircleRight, FaArrowCircleRight } from 'react-icons/fa';
 import {AiTwotoneFolder} from 'react-icons/ai'
+import fb from '../../Fire.js';
+import firestore from '@firebase/firestore';
+
+var firestore_list = fb
+    .firestore()
+    .collection("CV")
+    .doc("projects");
 
 export default class ProjectsSection extends React.Component{
+
+
+    state = {
+        projects:[],
+    }
+
+    constructor(props) {
+        super(props);
+
+         firestore_list.onSnapshot(doc => {
+            this.setState({
+                projects:doc.data().projects_list
+            })
+        })
+    }
+
+    renderProjects() {
+        
+        return this.state.projects.map((item) => {
+
+            return (
+                 <div className = "skill-item">
+                        
+                        <text className="skill-title-name">
+                        <FaArrowAltCircleRight className = "arrow-icon"></FaArrowAltCircleRight>
+                        {item.project_item}
+                        </text>
+                    </div>
+            )
+        })
+    }
+
 
     render() {
         return (
@@ -12,52 +51,11 @@ export default class ProjectsSection extends React.Component{
                      <AiTwotoneFolder className = "projects-icon"></AiTwotoneFolder>
                     <text className = "work-header">PROJECTS</text>
         
+                
+                
                 <div className = "skills-list">
-                    
-                    <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <FaArrowAltCircleRight className = "arrow-icon"></FaArrowAltCircleRight>
-                            Changing a LED's color based on temperature and humidity with an Arduino microcontroller
-                        </text>
-                    </div>
-
-                     <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <FaArrowAltCircleRight className = "arrow-icon"></FaArrowAltCircleRight>
-                            Am embedded alaram system powered by an Arduino microcontroller
-                        </text>
-                    </div>
-
-                     <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <FaArrowAltCircleRight className = "arrow-icon"></FaArrowAltCircleRight>
-                            Building an E-commerce website powered by React js and Firebase
-                            
-                        </text>
-                    </div>
-
-                     <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <FaArrowAltCircleRight className = "arrow-icon"></FaArrowAltCircleRight>
-                            A simple tic tac toe game developed in React js
-                        </text>
-                    </div>
-
-                    <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <FaArrowAltCircleRight className = "arrow-icon"></FaArrowAltCircleRight>
-                            A simple TODO Application on mobile(Android), developed in React Native and Cloud Firestore 
-                        </text>
-                    </div>
-
-                    
-
-               </div>
+                    {this.renderProjects()}
+                </div>
 
 
             </div>

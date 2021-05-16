@@ -16,7 +16,9 @@ export default class DescriptionSection extends React.Component {
 
     
     state = {
-        nume:"",
+        nume: "",
+        prenume:"",
+        short_description:"",
     }
 
     constructor(props) {
@@ -24,7 +26,10 @@ export default class DescriptionSection extends React.Component {
 
        firestore_list.onSnapshot(doc => {
             this.setState({
-                nume:doc.data().nume
+                nume: doc.data().nume,
+                prenume:doc.data().prenume,
+                short_description:doc.data().short_description,
+                
             })
         })
     }
@@ -41,19 +46,14 @@ export default class DescriptionSection extends React.Component {
             
             <div className = "description-container">
                 
-                <text className="header-name">{this.state.nume}</text>
+                <div  className="header-name">
+                    <text>{this.state.prenume} </text>
+                    <text>{this.state.nume}</text>
 
+                </div>
                 <div className = "short-summary">
                     <text className = "description">
-                        With a few experience in this domain, I am currently studying at
-                        Universitatea Politehnica Timisoara at Automation and Applied Informatics,
-                         in the 3rd year. I have basic knowledge of C, Python and JavaScript
-                         programming languages, knowledge in Object Oriented Programming in C++,
-                         Java as well as good understanding in OOP principles. In the present
-                          I am studying React JS and React Native, being passionate in web and
-                          mobile development. I've not worked for a company yet but I'm willing
-                          to learn new things every day, work hard, be open minded and hopefully
-                           become the part of a team.
+                        {this.state.short_description}
                     </text>
                 </div>
 

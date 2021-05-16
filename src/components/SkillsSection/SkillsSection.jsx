@@ -2,8 +2,45 @@ import React from 'react'
 import './SkillsSection.css';
 import { FaMouse } from 'react-icons/fa';
 import { BsArrowRight } from 'react-icons/bs'
+import fb from '../../Fire.js';
+import firestore from '@firebase/firestore';
+
+
+var firestore_list = fb
+    .firestore()
+    .collection("CV")
+    .doc("skills");
 
 export default class SkillsSection extends React.Component {
+
+
+    state = {
+        skills:[],
+    }
+
+    constructor(props) {
+        super(props);
+
+         firestore_list.onSnapshot(doc => {
+            this.setState({
+                skills:doc.data().skills_list
+            })
+        })
+    }
+
+    renderSkills() {
+        return this.state.skills.map((item) => {
+            return (
+                 <div className = "skill-item">
+                        
+                        <text className="skill-title-name">
+                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
+                            {item.skill_item}
+                        </text>
+                    </div>
+            )
+        })
+    }
 
     render() {
         return (
@@ -12,73 +49,10 @@ export default class SkillsSection extends React.Component {
                      <FaMouse className = "skills-icon"></FaMouse>
                     <text className = "work-header">SKILLS</text>
         
+
                 <div className = "skills-list">
-                    
-                    <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Experience using C, C++, Python and Java programming languages
-                        </text>
-                    </div>
-
-                     <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Good understanding in OOP programming concepts
-                        </text>
-                    </div>
-
-                     <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Knowledge in microprocessor and microcontroller(Arduino)
-                        </text>
-                    </div>
-
-                     <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Good knowledge in HTML, CSS and JavaScript
-                        </text>
-                    </div>
-
-                    <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Experience in using SQL Databases
-                        </text>
-                    </div>
-
-                    <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                            <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Good knowledge in framework React js
-                        </text>
-                    </div>
-
-                    <div className = "skill-item">
-                       
-                        <text className="skill-title-name">
-                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Good knowledge in React Native
-                        </text>
-                    </div>
-
-                    <div className = "skill-item">
-                        
-                        <text className="skill-title-name">
-                        <BsArrowRight className = "arrow-icon"></BsArrowRight>
-                            Experiene with Firebase, Cloud Firestore
-                        </text>
-                    </div>
-
-               </div>
+                    {this.renderSkills()}
+                </div>
 
 
             </div>

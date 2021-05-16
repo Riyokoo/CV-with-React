@@ -5,8 +5,39 @@ import { BsFillPersonFill, BsFillHouseDoorFill } from 'react-icons/bs'
 import { FaPhone } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { AiFillLinkedin,AiFillGithub } from 'react-icons/ai';
+import fb from '../../Fire.js';
+import firestore from '@firebase/firestore';
+
+var firestore_list = fb
+    .firestore()
+    .collection("CV")
+    .doc("personal-details");
 
 export default class PersonalDetailsSection extends React.Component {
+
+    state = {
+        address: "",
+        email: "",
+        phone:"",
+        github: "",
+        linkedin:"",
+        
+    }
+
+    constructor(props) {
+        super(props);
+
+        firestore_list.onSnapshot(doc => {
+            this.setState({
+                address: doc.data().address,
+                email: doc.data().email,
+                phone: doc.data().phone,
+                github: doc.data().github,
+                linkedin:doc.data().linkedin,
+                
+            })
+        })
+    }
 
     render() {
         return (
@@ -30,7 +61,7 @@ export default class PersonalDetailsSection extends React.Component {
                         <BsFillHouseDoorFill className = "house-icon"></BsFillHouseDoorFill>
                         <div className = "data adress-data">
                             <text className = "changed-font">Adress</text>
-                            <text>Bulevardul 2 scara 4 apartament 15</text>
+                            <text className = "changed-font-2">{this.state.address}</text>
                         </div>
                     </div>
 
@@ -38,7 +69,7 @@ export default class PersonalDetailsSection extends React.Component {
                         <FaPhone className = "phone-icon"></FaPhone>
                         <div className = "data">
                             <text className = "changed-font">Phone number</text>
-                            <text  className = "changed-font-2">0754364913</text>
+                            <text className="changed-font-2">{this.state.phone}</text>
                         </div>
                     </div>
 
@@ -46,7 +77,7 @@ export default class PersonalDetailsSection extends React.Component {
                         <MdEmail className = "phone-icon"></MdEmail>
                         <div className = "data">
                             <text className = "changed-font">Email adress</text>
-                            <text  className = "changed-font-2">vladimir.ciuculescu@</text>
+                            <text className="changed-font-2">{this.state.email}</text>
                         </div>
                     </div>
 
@@ -55,7 +86,7 @@ export default class PersonalDetailsSection extends React.Component {
                         <div className = "data ">
                             <text className = "changed-font">Github</text>
                             <a className="changed-font-2"
-                                href="https://github.com/Riyokoo" className="linkedin-link" >
+                                href={this.state.github} className="linkedin-link" >
                                  Riyokoo
                                 </a>
                         </div>
@@ -66,7 +97,7 @@ export default class PersonalDetailsSection extends React.Component {
                         <div className = "data ">
                             <text className = "changed-font">LinkedIn</text>
                             <a className="changed-font-2"
-                                href="https://www.linkedin.com/in/ciuculescu-vladimir-2017b41b9/" className="linkedin-link" >
+                                href={this.state.linkedin} className="linkedin-link" >
                                Ciuculescu Vladimir
                                 </a>
                         </div>

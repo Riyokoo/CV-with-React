@@ -16,31 +16,6 @@ const fb = firebase.initializeApp(firebaseConfig)
 export default fb;
 
 
-//export { firebase };
 
-  /*
-
-class Fire {
-
-    init() {
-        if (!firebase.app.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                
-            } else {
-                firebase
-                    .auth()
-                    .signInAnonymously()
-                    .catch(error => { });
-            }
-        })
-    }
-}
-
-export default Fire;
-*/
 
 

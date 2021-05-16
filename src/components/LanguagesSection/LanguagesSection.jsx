@@ -2,6 +2,13 @@ import React from 'react';
 import './LanguagesSection.css';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import fb from '../../Fire.js';
+import firestore from '@firebase/firestore';
+
+var firestore_list = fb
+    .firestore()
+    .collection("CV")
+    .doc("languages");
 
 const options = [
     { value: "A1", label: "A1" },
@@ -15,6 +22,34 @@ const options = [
 
 export default class LanguagesSection extends React.Component {
 
+
+    state = {
+        languages:[],
+    }
+
+    constructor(props) {
+        super(props);
+
+        firestore_list.onSnapshot(doc => {
+            this.setState({
+                languages:doc.data().languages_list,
+            })
+        })
+    }
+
+    renderLanguages() {
+        
+        return this.state.languages.map(item => {
+            return (
+                <div className = "language-item">
+                    <text>{item.language_item}</text>
+                    <Select className = "select" options = {options}></Select>
+
+                </div>
+            )
+        })
+    }
+
     render() {
         return (
             
@@ -24,27 +59,9 @@ export default class LanguagesSection extends React.Component {
                     <text>LANGUAGES</text>
                 </div>
                 
+
                 <div className = "languages-list">
-
-                    <div className = "language-item">
-                        <text>English</text>
-                        <Select className = "select" options = {options}></Select>
-                    </div>
-
-                    <div className = "language-item">
-                        <text>French</text>
-                                                                        <Select className = "select" options = {options}></Select>
-
-                    </div>
-
-                    <div className = "language-item">
-                        <text>German</text>
-                                                <Select className = "select" options = {options}></Select>
-
-                    </div>
-                     
-                    
-
+                    {this.renderLanguages()}
                 </div>
 
             </div>
