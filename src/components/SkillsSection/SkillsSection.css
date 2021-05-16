@@ -46,6 +46,7 @@
   font-size: 20px;
   transform: translateY(20%);
   padding-right: 10px;
+  color: #6495ed;
 }
 
 .skills-list::-webkit-scrollbar {

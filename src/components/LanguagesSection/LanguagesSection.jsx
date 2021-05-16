@@ -4,6 +4,8 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import fb from '../../Fire.js';
 import firestore from '@firebase/firestore';
+import EditText from 'react-editext';
+
 
 var firestore_list = fb
     .firestore()
@@ -24,7 +26,8 @@ export default class LanguagesSection extends React.Component {
 
 
     state = {
-        languages:[],
+        languages: [],
+        current_language:"",
     }
 
     constructor(props) {
@@ -37,12 +40,35 @@ export default class LanguagesSection extends React.Component {
         })
     }
 
+    changeLanguage(e) {
+        
+        var languages_copy = this.state.languages;
+
+        for (let i = 0; i < languages_copy.length; i++){
+            if (languages_copy[i].language_item == this.state.current_language) {
+                languages_copy[i].language_item = e;
+            }
+        }
+
+        this.setState({ languages: languages_copy });
+
+        firestore_list.set({
+            languages_list:this.state.languages
+        })
+    }
+
+
     renderLanguages() {
         
         return this.state.languages.map(item => {
             return (
                 <div className = "language-item">
-                    <text>{item.language_item}</text>
+                    <EditText
+                        showButtonsOnHover
+                        onEditingStart = {(e) => this.setState({current_language:e})}
+                        onSave = {(e) => this.changeLanguage(e)}
+                        value = {item.language_item}
+                    ></EditText>
                     <Select className = "select" options = {options}></Select>
 
                 </div>

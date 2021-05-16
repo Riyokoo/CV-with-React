@@ -3,6 +3,8 @@ import './EducationSection.css';
 import { IoIosSchool } from 'react-icons/io'
 import fb from '../../Fire.js';
 import firestore from '@firebase/firestore';
+import EditText from 'react-editext';
+
 
 var firestore_list = fb
     .firestore()
@@ -13,7 +15,10 @@ export default class EducationSection extends React.Component{
 
 
     state = {
-        education:[],
+        education: [],
+        current_organization: "",
+        current_qualification: "",
+        current_description:"",
     }
 
     constructor(props) {
@@ -26,6 +31,61 @@ export default class EducationSection extends React.Component{
         })
     }
 
+    changeQualification(e) {
+        
+        var education_copy = this.state.education;
+
+        for (let i = 0; i < education_copy.length; i++){
+            
+            if (education_copy[i].qualification == this.state.current_qualification) {
+                education_copy[i].qualification = e;
+            }
+ 
+        }
+
+        this.setState({ education: education_copy });
+
+        firestore_list.set({
+            education_list:this.state.education
+        })
+    }
+
+    changeOrganization(e) {
+         var education_copy = this.state.education;
+
+        for (let i = 0; i < education_copy.length; i++){
+            
+            if (education_copy[i].organization == this.state.current_organization) {
+                education_copy[i].organization = e;
+            }
+ 
+        }
+
+        this.setState({ education: education_copy });
+
+        firestore_list.set({
+            education_list:this.state.education
+        })
+    }
+
+    changeDescription(e) {
+         var education_copy = this.state.education;
+
+        for (let i = 0; i < education_copy.length; i++){
+            
+            if (education_copy[i].description == this.state.current_description) {
+                education_copy[i].description = e;
+            }
+ 
+        }
+
+        this.setState({ education: education_copy });
+
+        firestore_list.set({
+            education_list:this.state.education
+        })
+    }
+
     renderEducation() {
         
         return this.state.education.map((item) => {
@@ -35,11 +95,27 @@ export default class EducationSection extends React.Component{
                     <text className="period">{item.period}</text>
 
                         <div className = "education-title">
-                        <text className="education-title-name">{item.qualification}</text>
-                        <text>{item.organization}</text>
-                            <text className="description">
+                        <EditText
+                            showButtonsOnHover
+                            value={item.qualification}
+                            hint = "Qualification"
+                            onEditingStart = {(e)=>{this.setState({current_qualification:e})}}
+                            onSave = {(e) => {this.changeQualification(e)}}
+                            className="education-title-name"></EditText>
+                        <EditText
+                            onSave={(e) => { this.changeOrganization(e) }}
+                            hint = "Organization"
+                            showButtonsOnHover
+                            onEditingStart = {(e)=>{this.setState({current_organization:e})}}
+                            value={item.organization}></EditText>
+                        <EditText
+                            onSave={(e) => { this.changeDescription(e) }}
+                            hint = "description"
+                            showButtonsOnHover
+                            onEditingStart = {(e)=>{this.setState({current_description:e})}}
+                            value={item.description} className="description">
                                 {item.description}
-                            </text>
+                            </EditText>
                         </div>
 
                     </div>

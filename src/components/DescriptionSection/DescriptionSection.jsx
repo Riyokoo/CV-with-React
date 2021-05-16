@@ -2,6 +2,7 @@ import React from 'react';
 import './DescriptionSection.css';
 import fb from '../../Fire.js';
 import firestore from '@firebase/firestore';
+import EditText from 'react-editext';
 
 var firestore_list = fb
     .firestore()
@@ -34,6 +35,26 @@ export default class DescriptionSection extends React.Component {
         })
     }
     
+    changeNume(e) {
+        
+        firestore_list.update({
+            nume:e
+        })
+    }
+
+    changePrenume(e) {
+        
+        firestore_list.update({
+            prenume:e
+        })
+    }
+
+    changeDescription(e) {
+        
+        firestore_list.update({
+            short_description:e
+        })
+    }
     
 
 
@@ -47,14 +68,15 @@ export default class DescriptionSection extends React.Component {
             <div className = "description-container">
                 
                 <div  className="header-name">
-                    <text>{this.state.prenume} </text>
-                    <text>{this.state.nume}</text>
+                    <EditText showButtonsOnHover onSave = {(e)=> this.changePrenume(e)} value = {this.state.prenume}></EditText>
+                    <EditText showButtonsOnHover className = "edit-text" onSave = {(e) => this.changeNume(e)} value = {this.state.nume}></EditText>
+                    
 
                 </div>
                 <div className = "short-summary">
-                    <text className = "description">
-                        {this.state.short_description}
-                    </text>
+                    <EditText showButtonsOnHover type = "textarea" onSave = {(e) => this.changeDescription(e)} value = {this.state.short_description} className = "description">
+                        
+                    </EditText>
                 </div>
 
                 <hr></hr>

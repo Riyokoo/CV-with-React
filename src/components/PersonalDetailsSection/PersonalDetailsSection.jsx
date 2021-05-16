@@ -7,6 +7,12 @@ import { MdEmail } from 'react-icons/md';
 import { AiFillLinkedin,AiFillGithub } from 'react-icons/ai';
 import fb from '../../Fire.js';
 import firestore from '@firebase/firestore';
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import EditText from 'react-editext';
+
+
+
 
 var firestore_list = fb
     .firestore()
@@ -21,14 +27,16 @@ export default class PersonalDetailsSection extends React.Component {
         phone:"",
         github: "",
         linkedin:"",
-        
+        tara:"",
+        nume:"",
     }
 
-    constructor(props) {
+    constructor(props) {    
         super(props);
 
         firestore_list.onSnapshot(doc => {
             this.setState({
+                nume:doc.data().nume,
                 address: doc.data().address,
                 email: doc.data().email,
                 phone: doc.data().phone,
@@ -39,12 +47,50 @@ export default class PersonalDetailsSection extends React.Component {
         })
     }
 
+    changeNume(e) {
+        firestore_list.update({
+            nume:e
+        })
+    }
+
+    changeAddress(e) {
+        firestore_list.update({
+            address:e
+        })
+    }
+
+    changeEmail(e) {
+        firestore_list.update({
+            email:e
+        })
+    }
+
+    changePhone(e) {
+        firestore_list.update({
+            phone:e
+        })
+    }
+
+    changeGithub(e) {
+        firestore_list.update({
+            githuv:e
+        })
+    }
+
+    changeLinkedin(e) {
+        firestore_list.update({
+            phone:e
+        })
+    }
+
     render() {
         return (
             
             <div className = "personal-details-container">
                 <IoPersonCircleOutline className="profile-picture"></IoPersonCircleOutline>
                 
+                
+
                 <div className = "personal-details">
 
                     <text className = "personal-details-header">PERSONAL DETAILS</text>
@@ -53,7 +99,7 @@ export default class PersonalDetailsSection extends React.Component {
                         <BsFillPersonFill className = "profile-icon"></BsFillPersonFill>
                         <div className = "data">
                             <text className = "changed-font">Name</text>
-                            <text className = "changed-font-2">Ciuculescu Vladimir</text>
+                            <EditText showButtonsOnHover value = {this.state.nume} onSave = {(e) => this.changeNume(e)} className = "changed-font-2">Ciuculescu Vladimir</EditText>
                         </div>
                     </div>
 
@@ -61,23 +107,25 @@ export default class PersonalDetailsSection extends React.Component {
                         <BsFillHouseDoorFill className = "house-icon"></BsFillHouseDoorFill>
                         <div className = "data adress-data">
                             <text className = "changed-font">Adress</text>
-                            <text className = "changed-font-2">{this.state.address}</text>
+                            <EditText showButtonsOnHover value = {this.state.address} onSave = {(e) => this.changeAddress(e)} className = "changed-font-2"></EditText>
                         </div>
                     </div>
 
                     <div className = "section">
                         <FaPhone className = "phone-icon"></FaPhone>
+
                         <div className = "data">
                             <text className = "changed-font">Phone number</text>
-                            <text className="changed-font-2">{this.state.phone}</text>
+                            <EditText showButtonsOnHover value = {this.state.phone} onSave = {(e) => {this.changePhone(e)}} className = "changed-font-2"></EditText>
+                            
                         </div>
                     </div>
 
                     <div className = "section">
                         <MdEmail className = "phone-icon"></MdEmail>
-                        <div className = "data">
-                            <text className = "changed-font">Email adress</text>
-                            <text className="changed-font-2">{this.state.email}</text>
+                        <div className = "data adress-data">
+                            <text className = "changed-font">EMAIL</text>
+                            <EditText showButtonsOnHover value = {this.state.email} onSave = {(e) => this.changeEmail(e)} className = "changed-font-2">{this.state.address}</EditText>
                         </div>
                     </div>
 
@@ -102,6 +150,8 @@ export default class PersonalDetailsSection extends React.Component {
                                 </a>
                         </div>
                     </div>
+
+                   
 
                 </div>
 
