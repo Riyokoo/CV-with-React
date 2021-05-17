@@ -6,10 +6,24 @@
   margin-top: 10%;
 }
 
+.personal-details {
+  margin-top: 10%;
+}
+
 .personal-details-header {
   font-family: "PT Sans", sans-serif;
   color: white;
   margin-left: 5%;
+}
+
+.profile-picture-facebook {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-left: 15%;
+  border-width: 5px;
+  border-color: white;
+  border-style: double;
 }
 
 .changed-font {

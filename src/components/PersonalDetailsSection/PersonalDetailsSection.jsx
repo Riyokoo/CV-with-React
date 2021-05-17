@@ -10,6 +10,8 @@ import firestore from '@firebase/firestore';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import EditText from 'react-editext';
+import styled, { css } from 'styled-components'
+
 
 
 
@@ -18,6 +20,20 @@ var firestore_list = fb
     .firestore()
     .collection("CV")
     .doc("personal-details");
+
+var firestore_list_2 = fb
+    .firestore()
+    .collection("CV")
+    .doc("short-description");
+
+const StyledEditText = styled(EditText)`
+
+div[editext="view-container"], div[editext="edit-container"] {
+    color: white;
+    width: 300px;
+  }
+`
+
 
 export default class PersonalDetailsSection extends React.Component {
 
@@ -29,6 +45,7 @@ export default class PersonalDetailsSection extends React.Component {
         linkedin:"",
         tara:"",
         nume:"",
+        prenume:"",
     }
 
     constructor(props) {    
@@ -36,7 +53,7 @@ export default class PersonalDetailsSection extends React.Component {
 
         firestore_list.onSnapshot(doc => {
             this.setState({
-                nume:doc.data().nume,
+               
                 address: doc.data().address,
                 email: doc.data().email,
                 phone: doc.data().phone,
@@ -45,10 +62,17 @@ export default class PersonalDetailsSection extends React.Component {
                 
             })
         })
+
+        firestore_list_2.onSnapshot((doc) => {
+            this.setState({
+                nume: doc.data().nume,
+                prenume:doc.data().prenume,
+            })
+        })
     }
 
     changeNume(e) {
-        firestore_list.update({
+        firestore_list_2.update({
             nume:e
         })
     }
@@ -87,9 +111,11 @@ export default class PersonalDetailsSection extends React.Component {
         return (
             
             <div className = "personal-details-container">
-                <IoPersonCircleOutline className="profile-picture"></IoPersonCircleOutline>
                 
-                
+                <img
+                    src = "https://scontent.fotp3-2.fna.fbcdn.net/v/t1.6435-9/58978298_2167208186924065_8335017876276641792_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=174925&_nc_ohc=o8vi4wMKbbAAX9M5iiP&_nc_ht=scontent.fotp3-2.fna&oh=83e91b94d1457f25f4421ad7cae38222&oe=60C9229B"
+                    className = "profile-picture-facebook"
+                    />
 
                 <div className = "personal-details">
 
@@ -98,8 +124,9 @@ export default class PersonalDetailsSection extends React.Component {
                     <div className = "section">
                         <BsFillPersonFill className = "profile-icon"></BsFillPersonFill>
                         <div className = "data">
-                            <text className = "changed-font">Name</text>
-                            <EditText showButtonsOnHover value = {this.state.nume} onSave = {(e) => this.changeNume(e)} className = "changed-font-2">Ciuculescu Vladimir</EditText>
+                            <text className="changed-font">Name</text>
+                            <text className = "changed-font-2">{this.state.nume}</text>
+                            <text className = "changed-font-2">{this.state.prenume}</text>
                         </div>
                     </div>
 
@@ -123,9 +150,9 @@ export default class PersonalDetailsSection extends React.Component {
 
                     <div className = "section">
                         <MdEmail className = "phone-icon"></MdEmail>
-                        <div className = "data adress-data">
+                        <div className = "data ">
                             <text className = "changed-font">EMAIL</text>
-                            <EditText showButtonsOnHover value = {this.state.email} onSave = {(e) => this.changeEmail(e)} className = "changed-font-2">{this.state.address}</EditText>
+                            <StyledEditText showButtonsOnHover value = {this.state.email} onSave = {(e) => this.changeEmail(e)} className = "changed-font-2">{this.state.address}</StyledEditText>
                         </div>
                     </div>
 

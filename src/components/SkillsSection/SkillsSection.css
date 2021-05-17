@@ -20,6 +20,60 @@
   font-size: 15px;
 }
 
+.add-form {
+  margin-top: 20px;
+  margin-left: 28px;
+}
+
+.trash-icon-skills {
+  margin-left: auto;
+  margin-right: 30px;
+  transform: translateY(70%);
+  cursor: pointer;
+  color: #6495ed;
+}
+
+.add-skill {
+  border-color: transparent;
+  background-color: #6495ed;
+  color: white;
+  outline: 0;
+  border-radius: 6px;
+  width: 400px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+
+.add-button-interest {
+  border-color: transparent;
+  background-color: #6495ed;
+  margin-left: 20px;
+  color: white;
+  border-radius: 6px;
+}
+
+.add-skill-icon {
+  transform: translateY(25%);
+  padding-left: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6495ed;
+}
+
 .skill-item {
   display: flex;
   flex-direction: row;

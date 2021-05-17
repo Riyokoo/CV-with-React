@@ -4,7 +4,13 @@ import fb from '../../Fire.js';
 import firestore from '@firebase/firestore';
 import EditText from 'react-editext';
 
+
 var firestore_list = fb
+    .firestore()
+    .collection("CV")
+    .doc("short-description");
+
+var firestore_list_2 = fb
     .firestore()
     .collection("CV")
     .doc("short-description");
@@ -40,11 +46,19 @@ export default class DescriptionSection extends React.Component {
         firestore_list.update({
             nume:e
         })
+
+        firestore_list_2.update({
+            nume:e
+        })
     }
 
     changePrenume(e) {
         
         firestore_list.update({
+            prenume:e
+        })
+
+        firestore_list_2.update({
             prenume:e
         })
     }
