@@ -121,7 +121,6 @@ export default class EducationSection extends React.Component{
 
     changeEndPeriod(e) {
         
-        
         var education_copy = this.state.education;
 
         for (let i = 0; i < education_copy.length; i++){
@@ -135,6 +134,8 @@ export default class EducationSection extends React.Component{
         firestore_list.set({
             education_list:this.state.education
         })
+
+        
 
     }
 
